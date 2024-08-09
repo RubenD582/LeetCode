@@ -4,15 +4,23 @@ public class Main {
     }
 
     public static String convert(String s, int numRows) {
-        System.out.println();
+        if (numRows == 1) {
+            return s;
+        }
 
-        // String[][] ZigZag = new String[][];
-        // for (int i = 0; i < s.length(); i++) {
-        //     for (int j = 0; j < numRows; j++) {
+        int index = 0;
+        String output = "";
+        for (int i = 0; i < numRows; i++) {
+            index = 2 * (numRows - 1);
+            for (int j = i; j < s.length(); j += index) {
+                output += s.charAt(j);
 
-        //     }
-        // } 
+                if (i > 0 && i < numRows - 1 && j + index - 2 * i < s.length()) {
+                    output += s.charAt(j + index - 2 * i);
+                }
+            }
+        }
 
-        return "";
+        return output;
     }
 }
